@@ -153,12 +153,19 @@ class LoginPage extends StatelessWidget {
                 FadeAnimation(
                   1,
                   Center(
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        color: Colors.white,
+                    child: InkWell(
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/Signup');
+                      },
+                    )
+
+
                   ),
                 ),
               ],

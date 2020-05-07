@@ -3,6 +3,7 @@ import 'package:flutter_widget/screens/chats.dart';
 import 'package:flutter_widget/screens/setting.dart';
 import 'package:flutter_widget/screens/profile.dart';
 import 'package:flutter_widget/screens/login.dart';
+import 'package:flutter_widget/screens/signup.dart';
 import '../main.dart';
 
 class RouteGenerator {
@@ -19,6 +20,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => setting());
       case '/Logout':
         return MaterialPageRoute(builder: (_) => LoginPage());
+      case '/Signup':
+        return MaterialPageRoute(builder: (_) => Signup());
+
       case '/Chat':
       // Validation of correct data type
         if (args is String) {
