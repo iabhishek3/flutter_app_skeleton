@@ -5,6 +5,8 @@ import 'package:flutter_widget/screens/profile.dart';
 import 'package:flutter_widget/screens/setting.dart';
 import 'package:flutter_widget/screens/login.dart';
 import '../main.dart';
+import '../routes/routeconfig.dart';
+
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,8 +16,8 @@ class MyDrawer extends StatelessWidget {
                      children: <Widget>[
                        DrawerHeader(
                          child:Center(
-                                            child: Image.asset(
-                                              'assets/logo.png',
+                              child: Image.asset(
+                                             'assets/logo.png',
                                               width: 100,
                                             ),
                                           ),
@@ -27,51 +29,32 @@ class MyDrawer extends StatelessWidget {
                        ListTile(
                          title: Text('Dashboard'),
                          onTap: () {
-
-                           //Navigator.pop(context);
-                           Navigator.push(context,
-                           MaterialPageRoute(builder: (context) => MyApp()));
+   Navigator.of(context).pushNamed('/');
                          },
                        ),
                        ListTile(
                          title: Text('Chats'),
                          onTap: () {
-                           // Update the state of the app
-                           // ...
-                           // Then close the drawer
-                           Navigator.push(context,
-                           MaterialPageRoute(builder: (context) => Chats()));
+                       Navigator.of(context).pushNamed( '/Chat', arguments: 'Chat page', );
                          },
                        ),
 
                          ListTile(
                                                 title: Text('Profile'),
                                                 onTap: () {
-                                                  // Update the state of the app
-                                                  // ...
-                                                  // Then close the drawer
-                                                  Navigator.push(context,
-                                                  MaterialPageRoute(builder: (context) => profile()));
+                                                  Navigator.of(context).pushNamed('/Profile');
                                                 },
                                               ),
   ListTile(
                          title: Text('Settings'),
                          onTap: () {
-                           // Update the state of the app
-                           // ...
-                           // Then close the drawer
-                           Navigator.push(context,
-                           MaterialPageRoute(builder: (context) => setting()));
+                           Navigator.of(context).pushNamed('/Settings');
                          },
                        ),
                          ListTile(
                                                 title: Text('Log Out'),
                                                 onTap: () {
-                                                  // Update the state of the app
-                                                  // ...
-                                                  // Then close the drawer
-                                                  Navigator.push(context,
-                                                  MaterialPageRoute(builder: (context) => LoginPage()));
+                                                  Navigator.of(context).pushNamed('/Logout');
                                                 },
                                               ),
                      ],

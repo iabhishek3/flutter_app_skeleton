@@ -6,6 +6,7 @@ import './widget/drawer.dart';
 import 'screens/home.dart';
 import 'screens/setting.dart';
 import 'screens/chats.dart';
+import './routes/routeconfig.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,7 +50,8 @@ class _MyAppState extends State<MyApp> {
             ),
             floatingActionButtonLocation:
             FloatingActionButtonLocation.centerDocked,
-            bottomNavigationBar: BottomNav("Abhishek", this.bodyDataFunc))
+            bottomNavigationBar: BottomNav("Abhishek", this.bodyDataFunc)),
+        onGenerateRoute: RouteGenerator.generateRoute,
             );
   }
 }
