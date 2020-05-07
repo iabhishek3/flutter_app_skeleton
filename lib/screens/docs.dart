@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widget/drawer.dart';
+import '../routes/drawerconfig.dart';
 
 class GridDashboard extends StatelessWidget {
   Items item1 = new Items(

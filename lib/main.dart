@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget/screens/docs.dart';
 import 'package:flutter_widget/screens/profile.dart';
 import './widget/bottom_navigation.dart';
-import './widget/drawer.dart';
+import './routes/drawerconfig.dart';
 import 'screens/home.dart';
 import 'screens/setting.dart';
 import 'screens/chats.dart';

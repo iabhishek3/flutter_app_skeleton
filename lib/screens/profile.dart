@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import '../widget/drawer.dart';
+import '../routes/drawerconfig.dart';
 
 class profile extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widget/drawer.dart';
+import '../routes/drawerconfig.dart';
 class Chats extends StatelessWidget {
   final String data;
   Chats({

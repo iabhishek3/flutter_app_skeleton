@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Animation/FadeAnimation.dart';
+import '../routes/routeconfig.dart';
 import '../main.dart';
 class LoginPage extends StatelessWidget {
   @override
@@ -135,8 +136,7 @@ class LoginPage extends StatelessWidget {
                     child: Center(
                       child: new GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => MyApp()));
+                          Navigator.of(context).pushNamed('/');
                         },
                         child: new Text("Login",
                           style: TextStyle(
