@@ -1,12 +1,21 @@
 
 
 import 'package:flutter/material.dart';
+import '../widget/drawer.dart';
 
 class setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return  Scaffold(
+        drawer:MyDrawer(),
+        appBar: AppBar(
+            title: Text("Settings", style: TextStyle(fontSize: 24)),
+            centerTitle: false,
+            backgroundColor: Colors.indigo
+        ),
+        body: Text(
+            "Settings screen"
+        )
     );
   }
 }

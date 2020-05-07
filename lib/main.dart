@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget/screens/docs.dart';
+import 'package:flutter_widget/screens/profile.dart';
 import './widget/bottom_navigation.dart';
+import './widget/drawer.dart';
 import 'screens/home.dart';
 import 'screens/setting.dart';
+import 'screens/chats.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,9 +20,8 @@ class _MyAppState extends State<MyApp> {
   int currentTab = 0;
   final List<Widget> screens = [
     GridDashboard(),
-    home(),
-    
-    setting(),
+     Chats(),
+   profile(),
     setting(),
   ];
   final PageStorageBucket bucket = PageStorageBucket();
@@ -30,20 +32,15 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Widget',
+        title: 'Dashboard',
         home: Scaffold(
+            drawer:MyDrawer(),
             appBar: AppBar(
-              title: Text("Flutter Widget", style: TextStyle(fontSize: 24)),
+              title: Text("Dashboard", style: TextStyle(fontSize: 24)),
               centerTitle: false,
-              backgroundColor: Colors.indigo,
-              leading: IconButton(
-                icon: Icon(Icons.menu),
-                color: Colors.pink,
-                tooltip: 'Navigation menu',
-                onPressed: null,
-              ),
+              backgroundColor: Colors.indigo
             ),
             body: screens[currentTab],
             floatingActionButton: FloatingActionButton(
@@ -52,7 +49,8 @@ class _MyAppState extends State<MyApp> {
             ),
             floatingActionButtonLocation:
             FloatingActionButtonLocation.centerDocked,
-            bottomNavigationBar: BottomNav("Abhishek", this.bodyDataFunc)) 
+            bottomNavigationBar: BottomNav("Abhishek", this.bodyDataFunc))
             );
   }
 }
+

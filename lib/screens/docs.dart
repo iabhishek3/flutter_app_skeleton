@@ -1,112 +1,122 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../widget/drawer.dart';
 
 class GridDashboard extends StatelessWidget {
   Items item1 = new Items(
-      title: "Calendar",
-      subtitle: "March, Wednesday",
-      event: "3 Events",
-      img: "assets/todo.png",
+      name: "Dr Joe",
+      distance : "1.2 km",
+      star: 3,
+      img: "assets/1.png",
       );
 
   Items item2 = new Items(
-    title: "Groceries",
-    subtitle: "Bocali, Apple",
-    event: "4 Items",
-     img: "assets/todo.png",
+    name: "Dr. Harrison",
+    distance: "2.0 km",
+    star: 3,
+     img: "assets/2.png",
   );
   Items item3 = new Items(
-    title: "Locations",
-    subtitle: "Lucy Mao going to Office",
-    event: "",
-    img: "assets/todo.png",
+    name: "Dr. Iris",
+    distance: "4.5 km",
+    star: 2,
+    img: "assets/3.png",
   );
   Items item4 = new Items(
-    title: "Activity",
-    subtitle: "Rose favirited your Post",
-    event: "",
-     img: "assets/todo.png",
+    name: "Dr. Cisco Ramon",
+    distance: "2.4 km",
+    star: 5,
+     img: "assets/4.png",
   );
   Items item5 = new Items(
-    title: "To do",
-    subtitle: "Homework, Design",
-    event: "4 Items",
-     img: "assets/todo.png",
+    name: "Dr Wally",
+    distance: "1.4 km",
+    star: 3,
+     img: "assets/5.png",
   );
   Items item6 = new Items(
-    title: "Settings",
-    subtitle: "",
-    event: "2 Items",
-     img: "assets/todo.png",
+    name: "Dr. Julian",
+    distance: "3.2 km",
+    star: 3,
+     img: "assets/6.png",
   );
+
 
   @override
   Widget build(BuildContext context) {
     List<Items> myList = [item1, item2, item3, item4, item5, item6];
     var color = 0xff453658;
-    return GridView.count(
-          childAspectRatio: 1.0,
-          padding: EdgeInsets.only(left: 16, right: 16),
-          crossAxisCount: 2,
-          crossAxisSpacing: 18,
-          mainAxisSpacing: 18,
-          children: myList.map((data) {
-            return Container(
-              decoration: BoxDecoration(
-                  color: Color(color), borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    data.img,
-                    width: 42,
+    return Scaffold(
+        drawer:MyDrawer(),
+
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+          child: GridView.count(
+              childAspectRatio: 1.0,
+              padding: EdgeInsets.only(left: 1, right: 1),
+              crossAxisCount: 2,
+              crossAxisSpacing: 1,
+              mainAxisSpacing: 1,
+              children: myList.map((data) {
+                return Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[100] ,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        data.img,
+                        width: 100,
+                      ),
+                      SizedBox(
+                        height: 1,
+                      ),
+                      Text(
+                        data.name,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600)),
+                      ),
+
+                      Text(
+                        data.distance,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          for( var i = 0 ; i < data.star; i++ )
+                            new IconTheme(
+                              data: new IconThemeData(color: Colors.orange),
+                              child: new Icon(Icons.star, size: 20,), // I want to iterate this "star icon" for reviews.ratings.length times
+                            ),
+                        ],
+                      ),
+
+                    ],
                   ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Text(
-                    data.title,
-                    style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    data.subtitle,
-                    style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: Colors.white38,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Text(
-                    data.event,
-                    style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                ],
-              ),
-            );
-          }).toList());
+                );
+              }).toList()),
+        ));
+
+
     
   }
 }
 
 class Items {
-  String title;
-  String subtitle;
-  String event;
+  String name;
+  String distance;
+  int star;
   String img;
-  Items({this.title, this.subtitle, this.event, this.img});
+  Items({this.name, this.distance, this.star, this.img});
 }
