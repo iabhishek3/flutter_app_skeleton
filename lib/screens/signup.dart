@@ -12,7 +12,7 @@ class Signup extends StatelessWidget {
       Container(
       decoration: BoxDecoration(
       image: DecorationImage(
-          image: AssetImage("assets/bg.jpg"), // <-- BACKGROUND IMAGE
+        image: AssetImage("assets/bg.jpg"), // <-- BACKGROUND IMAGE
     fit: BoxFit.cover,
     ),
     ),
@@ -31,9 +31,7 @@ class Signup extends StatelessWidget {
   }
 }
 
-
 enum SingingCharacter {  PASSPORT, NRICP, NRICB, FIN }
-
 bool monVal = false;
 bool tuVal = false;
 bool wedVal = false;
@@ -56,8 +54,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ),
         Center(
           child: Image.asset(
-            'assets/logo.png',
-            width: 100,
+            'assets/Lgo2.png',
+            width: 300,
           ),
         ),
         Padding(
@@ -66,16 +64,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(
-                height: 5,
+                height: 10,
               ),
 
               FadeAnimation(
                 1,
                 Center(
                   child: Text(
-                    "Signup to continue",
+                    "Signup to continue 1",
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 25,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -369,7 +367,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                     child: GestureDetector(
                                         child: Text(" Terms & COnditions", style: TextStyle( color: Colors.blue)),
                                         onTap: () {
-                                          // do what you need to do when "Click here" gets clicked
+                                          Navigator.of(context).pushNamed('/Terms');
                                         }
                                     ),
                                   )

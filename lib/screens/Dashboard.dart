@@ -7,6 +7,7 @@ import 'docs.dart';
 import 'profile.dart';
 import 'setting.dart';
 import 'splash.dart';
+import 'home.dart';
 
 class AppHome extends StatefulWidget {
   @override _AppHomeState createState() => _AppHomeState();
@@ -16,8 +17,9 @@ class _AppHomeState extends State<AppHome> {
 
  int currentTab = 0;
   final List<Widget> screens = [
-    GridDashboard(),
-     Chats(),
+//    GridDashboard(),
+    Homepage(),
+    Chats(),
    profile(),
     setting(),
   ];
@@ -30,13 +32,33 @@ class _AppHomeState extends State<AppHome> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Dashboard',
+        title: 'Home',
         home: Scaffold(
             drawer:MyDrawer(),
             appBar: AppBar(
-              title: Text("Dashboard", style: TextStyle(fontSize: 24)),
-              centerTitle: false,
-              backgroundColor: Colors.indigo
+              title: Text("Home", style: TextStyle(fontSize: 24)),
+              centerTitle: true,
+              backgroundColor: Colors.indigo,
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.camera_enhance,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    // do something
+                  },
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.notifications,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    // do something
+                  },
+                )
+              ],
             ),
             body: screens[currentTab],
             floatingActionButton: FloatingActionButton(
@@ -45,7 +67,7 @@ class _AppHomeState extends State<AppHome> {
             ),
             floatingActionButtonLocation:
             FloatingActionButtonLocation.centerDocked,
-            bottomNavigationBar: BottomNav("Abhishek", this.bodyDataFunc)
+            bottomNavigationBar: BottomNav("", this.bodyDataFunc)
             
            
             

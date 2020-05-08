@@ -4,6 +4,11 @@ import 'package:flutter_widget/screens/setting.dart';
 import 'package:flutter_widget/screens/profile.dart';
 import 'package:flutter_widget/screens/login.dart';
 import 'package:flutter_widget/screens/signup.dart';
+import 'package:flutter_widget/screens/home.dart';
+import 'package:flutter_widget/screens/docs.dart';
+import 'package:flutter_widget/screens/terms.dart';
+
+import 'package:flutter_widget/screens/Dashboard.dart';
 import '../main.dart';
 
 class RouteGenerator {
@@ -14,24 +19,26 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => MyApp());
+      case '/Home':
+        return MaterialPageRoute(builder: (_) => Homepage());
+      case '/AppHome':
+        return MaterialPageRoute(builder: (_) => AppHome());
+      case '/Doctors':
+        return MaterialPageRoute(builder: (_) => GridDashboard());
+
       case '/Profile':
         return MaterialPageRoute(builder: (_) => profile());
       case '/Settings':
         return MaterialPageRoute(builder: (_) => setting());
+      case '/Chat':
+          return MaterialPageRoute(builder: (_) => Chats());
       case '/Logout':
         return MaterialPageRoute(builder: (_) => LoginPage());
       case '/Signup':
         return MaterialPageRoute(builder: (_) => Signup());
+      case '/Terms':
+        return MaterialPageRoute(builder: (_) => Terms());
 
-      case '/Chat':
-      // Validation of correct data type
-        if (args is String) {
-          return MaterialPageRoute(
-            builder: (_) => Chats(
-              data: args,
-            ),
-          );
-        }
         // If args is not of the correct type, return an error page.
         // You can also throw an exception while in development.
         return _errorRoute();

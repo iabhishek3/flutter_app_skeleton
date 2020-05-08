@@ -11,7 +11,6 @@ class GridDashboard extends StatelessWidget {
       star: 3,
       img: "assets/1.png",
       );
-
   Items item2 = new Items(
     name: "Dr. Harrison",
     distance: "2.0 km",
@@ -50,7 +49,11 @@ class GridDashboard extends StatelessWidget {
     var color = 0xff453658;
     return Scaffold(
         drawer:MyDrawer(),
-
+        appBar: AppBar(
+            title: Text("Doctors", style: TextStyle(fontSize: 24)),
+            centerTitle: false,
+            backgroundColor: Colors.indigo
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
           child: GridView.count(

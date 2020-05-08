@@ -29,8 +29,8 @@ class _BottomNavState extends State<BottomNav> with SingleTickerProviderStateMix
   }
   final List colorsList = [
     Colors.indigo,
-    Colors.greenAccent,
-    Colors.red,
+    Colors.indigo,
+    Colors.indigo,
     Colors.indigo
   ];
   void _onItemTapped(int index) {
@@ -66,7 +66,7 @@ class _BottomNavState extends State<BottomNav> with SingleTickerProviderStateMix
                         color: currentTab == 0 ? Colors.white : Colors.grey,
                       ),
                       Text(
-                        'Dashboard',
+                        'Home',
                         style: TextStyle(
                           color: currentTab == 0 ? Colors.white : Colors.grey,
                         ),
@@ -87,7 +87,7 @@ class _BottomNavState extends State<BottomNav> with SingleTickerProviderStateMix
                         color: currentTab == 1 ? Colors.white : Colors.grey,
                       ),
                       Text(
-                        'Chats',
+                        'Health',
                         style: TextStyle(
                           color: currentTab == 1 ? Colors.white : Colors.grey,
                         ),

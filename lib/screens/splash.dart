@@ -9,12 +9,13 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
+
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-     Timer(Duration(seconds: 5), () => Navigator.of(context).pushNamed('/Logout'));
+     Timer(Duration(seconds: 1), () => Navigator.of(context).pushNamed('/AppHome'));
   }
 
   @override
@@ -47,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         padding: EdgeInsets.only(top: 10.0),
                       ),
                       Text(
-                        "SDGT-APP",
+                        "HealthWay Medical",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -67,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       padding: EdgeInsets.only(top: 20.0),
                     ),
                     Text(
-                      "SDGT-APP",
+                      "GP App",
                       softWrap: true,
                       textAlign: TextAlign.center,
                       style: TextStyle(

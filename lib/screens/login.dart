@@ -27,8 +27,8 @@ class LoginPage extends StatelessWidget {
             ),
             Center(
               child: Image.asset(
-                'assets/logo.png',
-                width: 100,
+                'assets/Lgo2.png',
+                width: 300,
               ),
             ),
             Padding(

@@ -15,11 +15,30 @@ class MyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child:Center(
-              child: Image.asset(
-                'assets/logo.png',
-                width: 100,
-              ),
+            child:Column(
+              children: <Widget>[
+                Center(
+                  child: Container(
+                    width: 100.0,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        image: DecorationImage(
+                            image: AssetImage('assets/1.png'),
+                            fit: BoxFit.cover),
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(50.0)),
+                        boxShadow: [
+                          BoxShadow(blurRadius: 7.0, color: Colors.black)
+                        ]),
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Text(' Hi Anil | 29 M',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white )
+                )
+
+              ],
             ),
             decoration: BoxDecoration(
               color:Colors.indigo,
@@ -29,25 +48,7 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             title: Text('Dashboard'),
             onTap: () {
-              Navigator.of(context).pushNamed('/');
-            },
-          ),
-          ListTile(
-            title: Text('Chats'),
-            onTap: () {
-              Navigator.of(context).pushNamed( '/Chat', arguments: 'Chat page', );
-            },
-          ),
-          ListTile(
-            title: Text('Profile'),
-            onTap: () {
-              Navigator.of(context).pushNamed('/Profile');
-            },
-          ),
-          ListTile(
-            title: Text('Settings'),
-            onTap: () {
-              Navigator.of(context).pushNamed('/Settings');
+              Navigator.of(context).pushNamed('/AppHome');
             },
           ),
           ListTile(
