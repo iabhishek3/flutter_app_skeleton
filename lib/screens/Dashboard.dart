@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget/routes/drawerconfig.dart';
-import 'package:flutter_widget/widget/bottom_navigation.dart';
+import 'package:myvcapp/routes/drawerconfig.dart';
+import 'package:myvcapp/widget/bottom_navigation.dart';
 import '../routes/routeconfig.dart';
 import 'chats.dart';
 import 'docs.dart';

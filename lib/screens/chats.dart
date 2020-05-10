@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import '../routes/drawerconfig.dart';
+import '../src/pages/index.dart';
 class Chats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-    body: Text(
-    "Demo CHat page"
-    )
+    body: IndexPage(),
     );
   }
 }

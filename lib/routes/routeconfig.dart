@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget/screens/chats.dart';
-import 'package:flutter_widget/screens/setting.dart';
-import 'package:flutter_widget/screens/profile.dart';
-import 'package:flutter_widget/screens/login.dart';
-import 'package:flutter_widget/screens/signup.dart';
-import 'package:flutter_widget/screens/home.dart';
-import 'package:flutter_widget/screens/docs.dart';
-import 'package:flutter_widget/screens/terms.dart';
+import 'package:myvcapp/screens/chats.dart';
+import 'package:myvcapp/screens/setting.dart';
+import 'package:myvcapp/screens/profile.dart';
+import 'package:myvcapp/screens/login.dart';
+import 'package:myvcapp/screens/signup.dart';
+import 'package:myvcapp/screens/home.dart';
+import 'package:myvcapp/screens/docs.dart';
+import 'package:myvcapp/screens/terms.dart';
 
-import 'package:flutter_widget/screens/Dashboard.dart';
+import 'package:myvcapp/screens/Dashboard.dart';
 import '../main.dart';
 
 class RouteGenerator {

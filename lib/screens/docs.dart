@@ -1,22 +1,20 @@
 
 import 'package:flutter/cupertino.dart';
+import 'dart:async';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../routes/drawerconfig.dart';
-
-class GridDashboard extends StatelessWidget {
-  Items item1 = new Items(
-      name: "Dr Joe",
-      distance : "1.2 km",
-      star: 3,
-      img: "assets/1.png",
-      );
-  Items item2 = new Items(
-    name: "Dr. Harrison",
-    distance: "2.0 km",
-    star: 3,
-     img: "assets/2.png",
-  );
+import '../src/pages/call.dart';
+ class GridDashboard extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => GridDashboardState();
+  }
+class GridDashboardState extends State<GridDashboard> {
+  /// create a channelController to retrieve text value
+  final _channelController = '1122';
+  /// if channel textField is validated to have error
+  bool _validateError = false;
   Items item3 = new Items(
     name: "Dr. Iris",
     distance: "4.5 km",
@@ -27,31 +25,30 @@ class GridDashboard extends StatelessWidget {
     name: "Dr. Cisco Ramon",
     distance: "2.4 km",
     star: 5,
-     img: "assets/4.png",
+    img: "assets/4.png",
   );
   Items item5 = new Items(
     name: "Dr Wally",
     distance: "1.4 km",
     star: 3,
-     img: "assets/5.png",
+    img: "assets/5.png",
   );
   Items item6 = new Items(
     name: "Dr. Julian",
     distance: "3.2 km",
     star: 3,
-     img: "assets/6.png",
+    img: "assets/6.png",
   );
-
 
   @override
   Widget build(BuildContext context) {
-    List<Items> myList = [item1, item2, item3, item4, item5, item6];
+    List<Items> myList = [ item3, item4, item5, item6,item6,item6,item6,item6];
     var color = 0xff453658;
     return Scaffold(
         drawer:MyDrawer(),
         appBar: AppBar(
             title: Text("Doctors", style: TextStyle(fontSize: 24)),
-            centerTitle: false,
+            centerTitle: true,
             backgroundColor: Colors.indigo
         ),
         body: Padding(
@@ -85,15 +82,28 @@ class GridDashboard extends StatelessWidget {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600)),
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            data.distance,
+                            style: GoogleFonts.openSans(
+                                textStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600)),
+                          ),
+                          GestureDetector(
+                            onTap:onJoin,
+                            child:  new IconTheme(
+                              data: new IconThemeData(color: Colors.green),
+                              child: new Icon(Icons.video_call, size: 30,), // I want to iterate this "star icon" for reviews.ratings.length times
+                            ),
+                          ),
 
-                      Text(
-                        data.distance,
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600)),
+                        ],
                       ),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -110,9 +120,34 @@ class GridDashboard extends StatelessWidget {
                 );
               }).toList()),
         ));
+  }
 
+  Future<void> onJoin() async {
+    // update input validation
+    setState(() {
+      _channelController.isEmpty
+          ? _validateError = true
+          : _validateError = false;
+    });
+    if (_channelController.isNotEmpty) {
+      // await for camera and mic permissions before pushing video page
+      await _handleCameraAndMic();
+      // push video page with given channel name
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CallPage(
+            channelName: _channelController,
+          ),
+        ),
+      );
+    }
+  }
 
-    
+  Future<void> _handleCameraAndMic() async {
+    await PermissionHandler().requestPermissions(
+      [PermissionGroup.camera, PermissionGroup.microphone],
+    );
   }
 }
 

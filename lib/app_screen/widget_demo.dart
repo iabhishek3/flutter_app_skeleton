@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget/widget/bottom_navigation.dart';
+import 'package:myvcapp/widget/bottom_navigation.dart';
 
 class WidgetTree extends StatefulWidget {
   @override

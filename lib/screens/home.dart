@@ -15,7 +15,7 @@ class Homepage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                  padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Text(' Hello! Anil',
                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, )
                   )
@@ -44,10 +44,10 @@ class Homepage extends StatelessWidget {
                             width: 70.0,
                             height: 70.0,
                             child: Container(
-                              width: 70.0,
-                              height: 70.0,
+                              width: 80.0,
+                              height: 80.0,
                               child:   Image.asset( 'assets/doctor.jpg',
-                                width: 100,
+                                width: 80,
                               ),
                             ),
                           ),
@@ -58,7 +58,7 @@ class Homepage extends StatelessWidget {
                         },
                         child: Container(
                             padding: EdgeInsets.all(10.0),
-                            width: 240,
+                            width: 200,
                             child: Text('Speak to our Online GP DOctors',
                               style: GoogleFonts.openSans(
                                   textStyle: TextStyle(
@@ -99,10 +99,10 @@ class Homepage extends StatelessWidget {
                             width: 70.0,
                             height: 70.0,
                             child: Container(
-                              width: 70.0,
-                              height: 70.0,
+                              width: 80.0,
+                              height: 80.0,
                               child:   Image.asset( 'assets/docs.png',
-                                width: 100,
+                                width: 80,
                               ),
                             ),
                           ),
@@ -113,7 +113,7 @@ class Homepage extends StatelessWidget {
                         },
                         child: Container(
                             padding: EdgeInsets.all(10.0),
-                            width: 240,
+                            width: 200,
                             child: Text('My Documents',
                               style: GoogleFonts.openSans(
                                   textStyle: TextStyle(
@@ -151,10 +151,10 @@ class Homepage extends StatelessWidget {
 
                           },
                           child: Container(
-                            width: 70.0,
-                            height: 70.0,
+                            width: 80.0,
+                            height: 80.0,
                             child:   Image.asset( 'assets/prescription.png',
-                              width: 100,
+                              width: 80,
                             ),
                           ),
                         ),
@@ -164,7 +164,7 @@ class Homepage extends StatelessWidget {
                         },
                         child: Container(
                             padding: EdgeInsets.all(10.0),
-                            width: 240,
+                            width: 200,
                             child: Text('Prescription',
                               style: GoogleFonts.openSans(
                                   textStyle: TextStyle(
@@ -187,6 +187,7 @@ class Homepage extends StatelessWidget {
                   ),
                 ),
               ),
+
 
 
             ],

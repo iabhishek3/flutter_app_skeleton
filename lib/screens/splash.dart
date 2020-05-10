@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         backgroundColor: Colors.lightBlue[900],
                         radius: 50.0,
                         child: Image.asset(
-                'assets/logo.png',
+                'assets/Lgo2.png',
                 width: 100,
               ),
                       ),
