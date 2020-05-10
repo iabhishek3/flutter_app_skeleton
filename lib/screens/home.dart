@@ -38,7 +38,7 @@ class Homepage extends StatelessWidget {
                         padding: EdgeInsets.all(0.0),
                         child: GestureDetector(
                           onTap: () {
-
+                            Navigator.of(context).pushNamed('/Doctors');
                           },
                           child: Container(
                             width: 70.0,
@@ -55,6 +55,7 @@ class Homepage extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
+                          Navigator.of(context).pushNamed('/Doctors');
                         },
                         child: Container(
                             padding: EdgeInsets.all(10.0),

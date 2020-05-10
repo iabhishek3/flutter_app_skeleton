@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../utils/settings.dart';
 
 class CallPage extends StatefulWidget {
@@ -17,7 +18,9 @@ class CallPage extends StatefulWidget {
 class _CallPageState extends State<CallPage> {
   static final _users = <int>[];
   final _infoStrings = <String>[];
+  List<int> screens = [0,1];
   bool muted = false;
+  bool multiscreens = false;
 
   @override
   void dispose() {
@@ -76,7 +79,8 @@ class _CallPageState extends State<CallPage> {
       int elapsed,
     ) {
       setState(() {
-        final info = 'onJoinChannel: $channel, uid: $uid';
+//        final info = 'onJoinChannel: $channel, uid: $uid';
+        final info = 'Welcome Anil';
         _infoStrings.add(info);
       });
     };
@@ -120,7 +124,7 @@ class _CallPageState extends State<CallPage> {
   /// Helper function to get list of native views
   List<Widget> _getRenderViews() {
     final List<AgoraRenderWidget> list = [
-      AgoraRenderWidget(0, local: true, preview: true),
+      AgoraRenderWidget(0, local: false, preview: false),
     ];
     _users.forEach((int uid) => list.add(AgoraRenderWidget(uid)));
     return list;
@@ -128,7 +132,10 @@ class _CallPageState extends State<CallPage> {
 
   /// Video view wrapper
   Widget _videoView(view) {
-    return Expanded(child: Container(child: view));
+    return Expanded(child: Container(
+        child: view
+
+    ));
   }
 
   /// Video view row wrapper
@@ -143,27 +150,66 @@ class _CallPageState extends State<CallPage> {
 
   /// Video layout wrapper
   Widget _viewRows() {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    Offset offset = Offset.zero;
     final views = _getRenderViews();
     switch (views.length) {
       case 1:
-        return Container(
-            child: Column(
-          children: <Widget>[_videoView(views[0])],
-        ));
+        _onincreaseuser(false);
+        return   Container(
+          width: width,
+          height: height,
+          child: Stack(
+                alignment: Alignment.centerRight,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      _expandedVideoRow([views[0]])
+                    ],
+                  ),
+                ],
+              ),
+        );
+
       case 2:
-        return Container(
-            child: Column(
+        _onincreaseuser(true);
+        return   Stack(
+          alignment: Alignment.bottomRight,
           children: <Widget>[
-            _expandedVideoRow([views[0]]),
-            _expandedVideoRow([views[1]])
+       SizedBox(
+      height: height,
+      width: width,
+      child:   Column(
+        children: <Widget>[
+          _expandedVideoRow([views[screens[1]]])
+        ],
+      ),
+    ),
+            Positioned(
+              right: offset.dx,
+              bottom: offset.dy+100,
+              child: SizedBox(
+              height: 100,
+              width: 100,
+              child: Column(
+                        children: <Widget>[
+                         _expandedVideoRow([views[screens[0]]])
+                       ],
+            ),
+    ),
+            ),
+
+
           ],
-        ));
+        );
       case 3:
         return Container(
             child: Column(
           children: <Widget>[
+
+            _expandedVideoRow(views.sublist(2, 3)),
             _expandedVideoRow(views.sublist(0, 2)),
-            _expandedVideoRow(views.sublist(2, 3))
           ],
         ));
       case 4:
@@ -222,10 +268,41 @@ class _CallPageState extends State<CallPage> {
             elevation: 2.0,
             fillColor: Colors.white,
             padding: const EdgeInsets.all(12.0),
-          )
+          ),
+
         ],
       ),
     );
+  }
+  Widget _toolbartop() {
+    if(multiscreens){
+      return
+        Container(
+          alignment: Alignment.topRight,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              RawMaterialButton(
+                onPressed: _ontogglescreen,
+                child: Icon(
+                  Icons.autorenew,
+                  color: Colors.blueAccent,
+                  size: 20.0,
+                ),
+                shape: CircleBorder(),
+                elevation: 2.0,
+                fillColor: Colors.white,
+                padding: const EdgeInsets.all(3.0),
+              )
+            ],
+          ),
+        );
+    }
+    else{
+      return Text("");
+    }
+
   }
 
   /// Info panel to show logs
@@ -281,6 +358,14 @@ class _CallPageState extends State<CallPage> {
   void _onCallEnd(BuildContext context) {
     Navigator.pop(context);
   }
+  void _onincreaseuser(datadecision) {
+    setState(() {
+      multiscreens = datadecision;
+    });
+
+  }
+
+
 
   void _onToggleMute() {
     setState(() {
@@ -292,21 +377,99 @@ class _CallPageState extends State<CallPage> {
   void _onSwitchCamera() {
     AgoraRtcEngine.switchCamera();
   }
+  void _ontogglescreen() {
+    setState(() {
+      screens = screens.reversed.toList();
+    });
+
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
+    double widthc = MediaQuery.of(context).size.width;
+    double heightc = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text('GP Consulting'),
+        title: Text('GP COnsulting'),
       ),
       backgroundColor: Colors.black,
       body: Center(
-        child: Stack(
-          children: <Widget>[
-            _viewRows(),
-            _panel(),
-            _toolbar(),
-          ],
+        child: Container(
+          width: widthc,
+          height: heightc,
+          child: Stack(
+            children: <Widget>[
+              _viewRows(),
+              _panel(),
+              _toolbar(),
+              _toolbartop(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Dragbox extends StatefulWidget {
+
+  final Offset initPos;
+  final String label;
+  final Color itemcolor;
+
+  Dragbox(this.initPos,this.label,this.itemcolor);
+
+  @override
+  DragboxState createState() => DragboxState();
+}
+
+class DragboxState extends State<Dragbox> {
+  Offset position = Offset(0.0, 0.0);
+  @override
+  void initState(){
+    super.initState();
+    position= widget.initPos;
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      left:position.dx ,
+      top: position.dy ,
+      child: Draggable(
+        data: widget.itemcolor,
+        child: Container(
+          width: 100,
+          height: 100,
+          color: widget.itemcolor,
+          child: Text(
+            widget.label,
+            style: TextStyle(
+              color: Colors.white,
+              decoration: TextDecoration.none,
+              fontSize: 20
+            ),
+          ),
+        ),
+        onDraggableCanceled: (velocity,offset){
+          setState(() {
+            position=offset;
+          });
+
+        },
+        feedback: Container(
+          width: 100,
+          height: 100,
+          color: widget.itemcolor.withOpacity(0.5),
+          child: Text(
+            widget.label,
+            style: TextStyle(
+                color: Colors.white,
+                decoration: TextDecoration.none,
+                fontSize: 20
+            ),
+          ),
         ),
       ),
     );

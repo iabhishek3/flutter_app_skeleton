@@ -134,7 +134,7 @@ class LoginPage extends StatelessWidget {
                       child: Center(
                         child: new GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushNamed('/');
+                            Navigator.of(context).pushNamed('/AppHome');
                           },
                           child: new Text(
                             "Login",
