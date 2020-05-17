@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myvcapp/blocs/user_infromation_bloc.dart';
 import 'package:myvcapp/routes/drawerconfig.dart';
 import 'package:myvcapp/widget/bottom_navigation.dart';
+import 'package:provider/provider.dart';
 import '../routes/routeconfig.dart';
 import 'chats.dart';
 import 'docs.dart';
@@ -34,44 +36,44 @@ class _AppHomeState extends State<AppHome> {
     return MaterialApp(
         title: 'Home',
         home: Scaffold(
-            drawer:MyDrawer(),
-            appBar: AppBar(
-              title: Text("Home", style: TextStyle(fontSize: 24)),
-              centerTitle: true,
-              backgroundColor: Colors.indigo,
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.camera_enhance,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    // do something
-                  },
+                drawer:MyDrawer(),
+                appBar: AppBar(
+        title: Text("Home", style: TextStyle(fontSize: 24)),
+        centerTitle: true,
+        backgroundColor: Colors.indigo,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.camera_enhance,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // do something
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // do something
+            },
+          )
+        ],
                 ),
-                IconButton(
-                  icon: Icon(
-                    Icons.notifications,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    // do something
-                  },
-                )
-              ],
-            ),
-            body: screens[currentTab],
-            floatingActionButton: FloatingActionButton(
-              child: Icon(Icons.person),
-              onPressed: () {},
-            ),
-            floatingActionButtonLocation:
-            FloatingActionButtonLocation.centerDocked,
-            bottomNavigationBar: BottomNav("", this.bodyDataFunc)
-            
-           
-            
-            ),
+                body: screens[currentTab],
+                floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.person),
+        onPressed: () {},
+                ),
+                floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+                bottomNavigationBar: BottomNav("", this.bodyDataFunc)
+                
+               
+                
+                ),
         onGenerateRoute: RouteGenerator.generateRoute,
             );
   }
